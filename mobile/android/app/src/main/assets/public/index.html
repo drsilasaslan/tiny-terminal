@@ -6,7 +6,7 @@
 <title>Tiny Terminal 🖥️</title>
 <meta name="description" content="Tiny Terminal ist ein spielerisches Terminal für Kinder: Gib irgendetwas ein und erhalte Spaß mit ASCII-Art, Emojis, Geräuschen und kleinen Challenges.">
 <meta name="keywords" content="tiny terminal, terminal spiel, kinderspiel, tippen spiel, ascii-art, emoji spiel, interaktives lernen, web app">
-<meta name="author" content="Mei Park">
+<meta name="author" content="Tiny Terminal">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#2d2d2d">
 <meta name="geo.region" content="DE">
@@ -17,161 +17,20 @@
 <meta property="og:site_name" content="Tiny Terminal">
 <meta property="og:title" content="Tiny Terminal 🖥️">
 <meta property="og:description" content="Ein spielerisches Terminal für Kinder mit Animationen, ASCII-Art und Tipp-Spaß.">
-<meta property="og:url" content="https://tiny-terminal.com">
-<meta property="og:image" content="https://tiny-terminal.com/og.png">
+<meta property="og:image" content="social-preview.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="de_DE">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@meimakes">
 <meta name="twitter:title" content="Tiny Terminal 🖥️">
 <meta name="twitter:description" content="Ein spielerisches Terminal-Spiel für Kinder mit ASCII-Art und sofortiger Reaktion.">
-<meta name="twitter:image" content="https://tiny-terminal.com/og.png">
+<meta name="twitter:image" content="social-preview.png">
 <meta name="language" content="de">
-<link rel="canonical" href="https://tiny-terminal.com">
 <link rel="icon" type="image/png" sizes="32x32" href="social-preview.png">
 <link rel="icon" type="image/png" sizes="16x16" href="social-preview.png">
 <link rel="apple-touch-icon" href="social-preview.png">
 <link rel="manifest" href="manifest.webmanifest">
-
-<!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-DhMEzmtaH0fhY3PWgKjXO.js"></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --bg: #2d2d2d;
-    --surface: #3a3a3a;
-    --text: #e8e8e8;
-    --border: #4a4a4a;
-    --prompt: #8edf8e;
-    --red: #ff9a9a;
-    --orange: #ffbe8a;
-    --yellow: #fff1a0;
-    --green: #a8f0a8;
-    --blue: #a0d4ff;
-    --purple: #d4a8ff;
-    --pink: #ffb3d9;
-    --teal: #8aeaea;
-    --overlay: #999;
-  }
-
-  @media (prefers-color-scheme: light) {
-    :root {
-      --bg: #f5f5f5;
-      --surface: #e8e8e8;
-      --text: #333;
-      --border: #ccc;
-      --prompt: #4caf50;
-      --red: #ef5350;
-      --orange: #ff9800;
-      --yellow: #d4a017;
-      --green: #4caf50;
-      --blue: #42a5f5;
-      --purple: #ab47bc;
-      --pink: #ec407a;
-      --teal: #26a69a;
-      --overlay: #888;
-    }
-  }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'JetBrains Mono', monospace;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-
-  .titlebar {
-    background: var(--surface);
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .titlebar .dots { display: flex; gap: 6px; }
-  .titlebar .dot { width: 12px; height: 12px; border-radius: 50%; }
-  .dot.red { background: var(--red); }
-  .dot.yellow { background: var(--yellow); }
-  .dot.green { background: var(--green); }
-  .titlebar .title { flex: 1; text-align: center; font-size: 13px; color: var(--overlay); }
-
-  .terminal {
-    flex: 1;
-    padding: 16px 16px 16px 20px;
-    overflow-y: auto;
-    font-size: 16px;
-    line-height: 1.6;
-  }
-
-  .terminal::-webkit-scrollbar { width: 8px; }
-  .terminal::-webkit-scrollbar-track { background: var(--bg); }
-  .terminal::-webkit-scrollbar-thumb { background: var(--surface); border-radius: 4px; }
-
-  .line { margin-bottom: 2px; white-space: pre-wrap; word-wrap: break-word; }
-  .line .prompt { color: var(--prompt); font-weight: bold; }
-  .line .cmd { color: var(--text); }
-
-  .output { color: var(--text); margin-bottom: 4px; white-space: pre-wrap; }
-  .output.art { color: var(--yellow); }
-  .output.info { color: var(--blue); }
-  .output.success { color: var(--green); }
-  .output.magic { color: var(--purple); }
-  .output.error { color: var(--red); }
-  .output.peach { color: var(--orange); }
-  .output.teal { color: var(--teal); }
-  .output.pink { color: var(--pink); }
-
-  .input-line { display: flex; align-items: flex-start; clear: both; }
-  .input-line .prompt { color: var(--prompt); font-weight: bold; }
-
-  #input {
-    background: none;
-    border: none;
-    color: var(--text);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 16px;
-    outline: none;
-    flex: 1;
-    caret-color: var(--prompt);
-  }
-
-  .emoji-big { font-size: 32px; line-height: 1.4; }
-  .emoji-flood { font-size: 24px; line-height: 1.3; word-break: break-all; }
-
-  .celebration { }
-
-  .rainbow {
-    background: linear-gradient(90deg, var(--red), var(--orange), var(--yellow), var(--green), var(--blue), var(--purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-weight: bold;
-  }
-
-  .giant { font-size: 28px; font-weight: bold; }
-  .counter { font-size: 48px; font-weight: bold; color: var(--yellow); }
-  .creature-art { color: var(--purple); font-size: 14px; line-height: 1.2; }
-
-  .challenge-box {
-    border: 2px solid var(--purple);
-    border-radius: 8px;
-    padding: 8px 12px;
-    margin: 4px 0 8px;
-    display: inline-block;
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -187,20 +46,7 @@
 <div class="terminal" id="terminal">
 </div>
 
-<script>
-(function() {
-  const t = document.getElementById('terminal');
-  const animalKeys = Object.keys(window._animals || {});
-  // Will be populated after animals object is defined
-  window._showWelcome = function() {
-    const emoji = ['🚀','🦕','🐱','🔥','⭐','🌈','💎','🎸','🦞','🐙','🎪','🌸','🍕','🎯','🐋','🦋','🌊','🎵','🍭','🐲','👾','🪐','🦈','🌻','🎨','🐸','🏀','🦄','🎃','🐧'];
-    let row = '';
-    for (let i = 0; i < 8; i++) row += emoji[Math.floor(Math.random() * emoji.length)];
-    const hello = `<pre style="color:var(--green);font-size:13px;line-height:1.1"> _          _ _       _ \n| |__   ___| | | ___ | |\n| '_ \\ / _ \\ | |/ _ \\| |\n| | | |  __/ | | (_) |_|\n|_| |_|\\___|_|_|\\___/(_)</pre>`;
-    t.innerHTML = hello + `<div class="output emoji-big celebration">${row}</div><div class="output" style="margin-bottom:8px"></div>`;
-  };
-})();
-</script>
+<script src="js/terminal-shell.js"></script>
 
 <!-- input is injected inside terminal by script -->
 
@@ -209,6 +55,188 @@ const terminal = document.getElementById('terminal');
 
 let gibberishCount = 0;
 let pendingChallenge = null;
+
+const commandAliases = {
+  cat: 'cat',
+  katze: 'cat',
+  hund: 'dog',
+  dog: 'dog',
+  fisch: 'fish',
+  fische: 'fish',
+  fish: 'fish',
+  vogel: 'bird',
+  bird: 'bird',
+  schlange: 'snake',
+  snake: 'snake',
+  frosch: 'frog',
+  frog: 'frog',
+  kuh: 'cow',
+  cow: 'cow',
+  schwein: 'pig',
+  pig: 'pig',
+  ente: 'duck',
+  duck: 'duck',
+  hai: 'shark',
+  shark: 'shark',
+  dinosaurier: 'dinosaur',
+  dinosaur: 'dinosaur',
+  hummer: 'lobster',
+  lobster: 'lobster',
+  elefant: 'elephant',
+  elephant: 'elephant',
+  affe: 'monkey',
+  monkey: 'monkey',
+  baer: 'bear',
+  bär: 'bear',
+  rabbit: 'rabbit',
+  hase: 'rabbit',
+  eule: 'owl',
+  owl: 'owl',
+  schildkroete: 'turtle',
+  schildkröte: 'turtle',
+  turtle: 'turtle',
+  pinguin: 'penguin',
+  penguin: 'penguin',
+  loewe: 'lion',
+  löwe: 'lion',
+  lion: 'lion',
+  delfin: 'dolphin',
+  dolphin: 'dolphin',
+  panda: 'panda',
+  koala: 'koala',
+  flugzeug: 'airplane',
+  airplane: 'airplane',
+  plane: 'airplane',
+  lkw: 'truck',
+  truck: 'truck',
+  excavator: 'excavator',
+  bagger: 'excavator',
+  rakete: 'rocket',
+  rocket: 'rocket',
+  zug: 'train',
+  train: 'train',
+  helikopter: 'helicopter',
+  hubschrauber: 'helicopter',
+  helicopter: 'helicopter',
+  bulldozer: 'bulldozer',
+  kran: 'crane',
+  crane: 'crane',
+  boot: 'boat',
+  boat: 'boat',
+  auto: 'car',
+  car: 'car',
+  bus: 'bus',
+  fahrrad: 'bicycle',
+  bicycle: 'bicycle',
+  roller: 'scooter',
+  scooter: 'scooter',
+  ambulance: 'ambulance',
+  rettungswagen: 'ambulance',
+  red: 'red',
+  rot: 'red',
+  blue: 'blue',
+  blau: 'blue',
+  green: 'green',
+  gruen: 'green',
+  grün: 'green',
+  yellow: 'yellow',
+  gelb: 'yellow',
+  orange: 'orange',
+  purple: 'purple',
+  lila: 'purple',
+  pink: 'pink',
+  black: 'black',
+  schwarz: 'black',
+  white: 'white',
+  weiss: 'white',
+  weiß: 'white',
+  brown: 'brown',
+  braun: 'brown',
+  help: 'help',
+  hilfe: 'help',
+  h: 'help',
+  joke: 'joke',
+  jokes: 'joke',
+  witz: 'joke',
+  witze: 'joke',
+  lustig: 'joke',
+  funny: 'joke',
+  magic: 'magic',
+  magie: 'magic',
+  abracadabra: 'magic',
+  alakazam: 'magic',
+  shazam: 'magic',
+  presto: 'magic',
+  wizard: 'magic',
+  spell: 'magic',
+  dance: 'dance',
+  tanzen: 'dance',
+  party: 'dance',
+  rainbow: 'rainbow',
+  regenbogen: 'rainbow',
+  robot: 'robot',
+  roboter: 'robot',
+  beep: 'robot',
+  moon: 'moon',
+  mond: 'moon',
+  sun: 'sun',
+  sonne: 'sun',
+  star: 'star',
+  stars: 'star',
+  stern: 'star',
+  sterne: 'star',
+  animals: 'animals',
+  tiere: 'animals',
+  vehicles: 'vehicles',
+  fahrzeuge: 'vehicles',
+  cars: 'vehicles',
+  trucks: 'vehicles',
+  colors: 'colors',
+  colours: 'colors',
+  farben: 'colors',
+  letters: 'letters',
+  buchstaben: 'letters',
+  numbers: 'numbers',
+  zahlen: 'numbers',
+  clear: 'clear',
+  loeschen: 'clear',
+  löschen: 'clear',
+  cls: 'clear',
+  'i am': 'intro',
+  'my name is': 'intro',
+  'ich bin': 'intro',
+  'mein name ist': 'intro',
+  hallo: 'hello',
+  hello: 'hello',
+  hi: 'hello',
+  hey: 'hello',
+};
+
+const canonicalSingleWords = new Set([
+  'cat','dog','fish','bird','snake','frog','cow','pig','duck','shark','dinosaur','lobster','elephant',
+  'monkey','bear','rabbit','owl','turtle','penguin','lion','dolphin','panda','koala',
+  'airplane','truck','excavator','rocket','train','helicopter','bulldozer','crane','boat','car','bus','bicycle','scooter','ambulance',
+  'red','blue','green','yellow','orange','purple','pink','black','white','brown',
+  'hello','help','joke','magic','dance','rainbow','robot','moon','sun','star',
+  'animals','vehicles','colors','letters','numbers','clear','intro',
+]);
+
+function normalizeInput(text) {
+  return text
+    .trim()
+    .toLowerCase()
+    .replace(/ä/g, 'ae')
+    .replace(/ö/g, 'oe')
+    .replace(/ü/g, 'ue')
+    .replace(/ß/g, 'ss')
+    .replace(/[.!?,]+$/g, '')
+    .replace(/\s+/g, ' ');
+}
+
+function canonicalize(text) {
+  const normalized = normalizeInput(text);
+  return commandAliases[normalized] || normalized;
+}
 
 const allEmoji = ['🚀','🦕','🐱','🔥','⭐','🌈','💎','🎸','🦞','🐙','🎪','🌸','🍕','🎯','🐋','🦋','🌊','🎵','🍭','🐲','👾','🪐','🦈','🌻','🎨','🐸','🏀','🧲','🦄','🎃','🐧','🎺','🌮','🦊','🔮','🎠','🐢','⚡','🍩','🎈'];
 
@@ -250,6 +278,9 @@ const vehicles = {
   'bus':         { emoji: '🚌', art: '  ______________\n |  BUS!  [] [] |\n |_____________|\n   (O)      (O)', sound: 'All aboard!' },
 };
 
+</script>
+<script src="js/terminal-content.js"></script>
+<script>
 const colors = {
   'red':    { emoji: '🔴', things: '🍎 🚒 🌹 ❤️ 🍓' },
   'blue':   { emoji: '🔵', things: '🌊 🦋 🫐 💎 🐳' },
@@ -279,21 +310,21 @@ const numberComparisons = {
 };
 
 const challenges = [
-  { prompt: '🐱', answer: 'cat', hint: 'Welches Tier ist das?' },
-  { prompt: '🐶', answer: 'dog', hint: 'Welches Tier ist das?' },
-  { prompt: '🐸', answer: 'frog', hint: 'Welches Tier ist das?' },
-  { prompt: '🐍', answer: 'snake', hint: 'Welches Tier ist das?' },
-  { prompt: '🦞', answer: 'lobster', hint: 'Welches Tier ist das?' },
-  { prompt: '🚀', answer: 'rocket', hint: 'Was ist das?' },
-  { prompt: '✈️', answer: ['airplane','plane'], hint: 'Was ist das?' },
-  { prompt: '🚛', answer: 'truck', hint: 'Was ist das?' },
-  { prompt: '🔴', answer: 'red', hint: 'Welche Farbe?' },
-  { prompt: '🔵', answer: 'blue', hint: 'Welche Farbe?' },
-  { prompt: '🟢', answer: 'green', hint: 'Welche Farbe?' },
-  { prompt: '🟡', answer: 'yellow', hint: 'Welche Farbe?' },
-  { prompt: '🐟🐟🐟', answer: '3', hint: 'Wie viele Fische?' },
-  { prompt: '⭐⭐⭐⭐⭐', answer: '5', hint: 'Wie viele Sterne?' },
-  { prompt: '🍎🍎', answer: '2', hint: 'Wie viele Äpfel?' },
+  { prompt: '🐱', answer: ['cat','katze'], hint: 'Welches Tier ist das?' },
+  { prompt: '🐶', answer: ['dog','hund'], hint: 'Welches Tier ist das?' },
+  { prompt: '🐸', answer: ['frog','frosch'], hint: 'Welches Tier ist das?' },
+  { prompt: '🐍', answer: ['snake','schlange'], hint: 'Welches Tier ist das?' },
+  { prompt: '🦞', answer: ['lobster','hummer'], hint: 'Welches Tier ist das?' },
+  { prompt: '🚀', answer: ['rocket','rakete'], hint: 'Was ist das?' },
+  { prompt: '✈️', answer: ['airplane','plane','flugzeug'], hint: 'Was ist das?' },
+  { prompt: '🚛', answer: ['truck','lkw'], hint: 'Was ist das?' },
+  { prompt: '🔴', answer: ['red','rot'], hint: 'Welche Farbe?' },
+  { prompt: '🔵', answer: ['blue','blau'], hint: 'Welche Farbe?' },
+  { prompt: '🟢', answer: ['green','gruen','grün'], hint: 'Welche Farbe?' },
+  { prompt: '🟡', answer: ['yellow','gelb'], hint: 'Welche Farbe?' },
+  { prompt: '🐟🐟🐟', answer: ['3','drei'], hint: 'Wie viele Fische?' },
+  { prompt: '⭐⭐⭐⭐⭐', answer: ['5','fünf'], hint: 'Wie viele Sterne?' },
+  { prompt: '🍎🍎', answer: ['2','zwei'], hint: 'Wie viele Äpfel?' },
 ];
 
 const animalLabels = {
@@ -378,12 +409,10 @@ async function countUpAnimation(target) {
 }
 
 function isKnownWord(lower) {
-  return animals[lower] || vehicles[lower] || colors[lower] ||
-    ['help','hilfe','h','joke','jokes','witz','witze','funny','lustig',
-     'dance','tanzen','party','magic','magie','abracadabra','alakazam','shazam','presto','wizard','spell',
-     'rainbow','regenbogen','robot','roboter','beep','moon','mond','sun','sonne','star','stars','stern','sterne',
-     'clear','cls','loeschen','clearen','hi','hallo','hello','hey',
-     'animals','tiere','colors','colours','farben','fahrzeuge','cars','trucks','letters','buchstaben','numbers','zahlen'].includes(lower);
+  const canonical = canonicalize(lower);
+  if (animals[canonical] || vehicles[canonical] || colors[canonical]) return true;
+  if (canonicalSingleWords.has(canonical)) return true;
+  return ['hello','help','joke','magic','dance','rainbow','robot','moon','sun','star','animals','vehicles','colors','letters','numbers','clear','intro'].includes(canonical);
 }
 
 function isGibberish(text) {
@@ -409,45 +438,13 @@ const gibberishResponses = [
     const e = allEmoji[Math.floor(Math.random() * allEmoji.length)];
     return { text: `<span class="emoji-big">${e} ${e} ${e} ${e} ${e}</span>`, cls: 'celebration' };
   },
-  (text) => {
-    const reversed = text.split('').reverse().join('');
-    return { text: `🪞 backwards: <span class="rainbow">${reversed}</span>`, cls: 'magic celebration' };
-  },
-  (text) => {
-    const exploded = text.split('').map(c => c + allEmoji[Math.floor(Math.random() * allEmoji.length)]).join('');
-    return { text: `💥 ${exploded}`, cls: 'celebration' };
-  },
-  (text) => {
-    const vertical = text.split('').join('\n');
-    return { text: `<pre>${vertical}</pre>`, cls: 'magic celebration' };
-  },
-  (text) => ({ text: `🤖 the computer tried to say "${text}" but got confused! 🤯💫`, cls: 'peach celebration' }),
-  (text) => {
-    const code = text.split('').map(c => String.fromCharCode(c.charCodeAt(0) + 1)).join('');
-    return { text: `🔐 secret code: <span class="rainbow">${code}</span>`, cls: 'magic celebration' };
-  },
-  (text) => {
-    const facts = [
-      '🦕 Dinosaurs lived for 165 million years!',
-      '🐙 Octopuses have THREE hearts!',
-      '🍯 Honey never goes bad — ever!',
-      '🌙 The moon is slowly drifting away from Earth!',
-      '🐘 Elephants can\'t jump!',
-      '🦈 Sharks are older than trees!',
-      '🐝 A bee visits 50-100 flowers in one trip!',
-    ];
-    return { text: facts[Math.floor(Math.random() * facts.length)], cls: 'info celebration' };
-  },
-  (text) => {
-    const sounds = ['BOING!','SPLAT!','WHOOOMP!','KABOOM!','ZING!','BLOOP!','WHAM!','SWOOSH!'];
-    const s = sounds[Math.floor(Math.random() * sounds.length)];
-    return { text: `<span class="giant">${s}</span> 💥🔊`, cls: 'peach celebration' };
-  },
 ];
 
 async function handleCommand(raw) {
   const text = raw.trim();
   const lower = text.toLowerCase();
+  const canonical = canonicalize(text);
+  const introMatch = canonical.match(/^(i am|my name is|ich bin|mein name ist)\s+(.+)$/);
   addLine('tippe hier&gt;&nbsp;', text);
 
   if (!text) { addOutput('Gib bitte etwas ein! 🎯', 'info'); scrollToBottom(); return; }
@@ -455,7 +452,8 @@ async function handleCommand(raw) {
   if (pendingChallenge) {
     const c = pendingChallenge;
     const answers = Array.isArray(c.answer) ? c.answer : [c.answer];
-    if (answers.includes(lower)) {
+    const canonicalAnswers = answers.map((answer) => canonicalize(String(answer)));
+    if (canonicalAnswers.includes(canonical)) {
       pendingChallenge = null;
       gibberishCount = 0;
       addOutput(`<span class="rainbow giant">RICHTIG! ✨🎉✨</span>`, 'celebration');
@@ -470,7 +468,7 @@ async function handleCommand(raw) {
     gibberishCount = 0;
     const upper = lower.toUpperCase();
     const animal = letterAnimals[lower] || '✨';
-    addOutput(`<span class="rainbow giant">${upper}</span>  <span class="emoji-big">${animal}</span>`, 'celebration');
+    addOutput(`<span class="rainbow giant">${upper}</span>  ${animal}`, 'celebration');
     scrollToBottom(); return;
   }
 
@@ -501,44 +499,44 @@ async function handleCommand(raw) {
     scrollToBottom(); return;
   }
 
-  if (animals[lower]) {
+  if (animals[canonical]) {
     gibberishCount = 0;
-    const a = animals[lower];
+    const a = animals[canonical];
     addOutput(`<span class="emoji-big">${a.emoji}${a.emoji}${a.emoji}</span>`, 'celebration');
     addOutput(`<pre>${a.art}</pre>`, 'art');
     addOutput(a.sound, 'success');
     scrollToBottom(); return;
   }
 
-  if (vehicles[lower]) {
+  if (vehicles[canonical]) {
     gibberishCount = 0;
-    const v = vehicles[lower];
+    const v = vehicles[canonical];
     addOutput(`<span class="emoji-big">${v.emoji}${v.emoji}${v.emoji}</span>`, 'celebration');
     addOutput(`<pre>${v.art}</pre>`, 'art');
     addOutput(v.sound, 'success');
     scrollToBottom(); return;
   }
 
-  if (colors[lower]) {
+  if (colors[canonical]) {
     gibberishCount = 0;
-    const c = colors[lower];
+    const c = colors[canonical];
     addOutput(`<span class="emoji-big">${c.things}</span>`, 'celebration');
     scrollToBottom(); return;
   }
 
-  if (['hallo','hello','hi','hey'].includes(lower)) { gibberishCount = 0; addOutput('👋 Hallo! 🖥️✨', 'success celebration'); scrollToBottom(); return; }
+  if (canonical === 'hello') { gibberishCount = 0; addOutput('👋 Hallo! 🖥️✨', 'success celebration'); scrollToBottom(); return; }
 
-  if (lower === 'help' || lower === 'hilfe') {
+  if (canonical === 'help') {
     gibberishCount = 0;
-    addOutput('🐾 Tiere: cat (Katze), dog (Hund), shark (Hai), dinosaur (Dinosaurier)...', 'teal');
-    addOutput('🚗 Fahrzeuge: airplane (Flugzeug), truck (LKW), rocket (Rakete)...', 'peach');
-    addOutput('🎨 Farben: red (Rot), blue (Blau), green (Grün)...', 'pink');
+    addOutput('🐾 Tiere: Katze, Hund, Hai, Dinosaurier, Frosch...', 'teal');
+    addOutput('🚗 Fahrzeuge: Flugzeug, LKW, Rakete, Zug, Hubschrauber...', 'peach');
+    addOutput('🎨 Farben: Rot, Blau, Grün, Gelb, Lila...', 'pink');
     addOutput('🔤 Buchstaben: a, b, c...', 'success');
     addOutput('🔢 Zahlen: 1, 2, 1000...', 'magic');
     scrollToBottom(); return;
   }
 
-  if (['joke','jokes','witz','witze','funny','lustig'].includes(lower)) {
+  if (canonical === 'joke') {
     gibberishCount = 0;
     const jokes = [
       '🤣 Warum hat der Computer geniest?\nEr hatte ein Virus!',
@@ -552,27 +550,27 @@ async function handleCommand(raw) {
     scrollToBottom(); return;
   }
 
-  if (['magic','magie','abracadabra','alakazam','shazam','presto','wizard','spell'].includes(lower)) {
+  if (canonical === 'magic') {
     gibberishCount = 0; addOutput('✨🔮💫⭐🌟✨🔮💫⭐🌟✨', 'magic celebration'); scrollToBottom(); return;
   }
 
-  if (lower === 'dance' || lower === 'tanzen' || lower === 'party') { gibberishCount = 0; addOutput('🕺💃🪩🎵🎶🕺💃🪩🎵🎶', 'magic celebration'); scrollToBottom(); return; }
-  if (lower === 'rainbow' || lower === 'regenbogen') { gibberishCount = 0; addOutput('<span class="rainbow giant">REGENBOGEN!</span>', 'celebration'); addOutput('🔴🟠🟡🟢🔵🟣', 'celebration'); scrollToBottom(); return; }
-  if (lower === 'robot' || lower === 'roboter' || lower === 'beep') { gibberishCount = 0; addOutput('🤖 BEEP BOOP!', 'teal celebration'); addOutput('<pre>  [o_o]\\n  /| |\\\n   | |\n  _|_|_</pre>', 'art'); scrollToBottom(); return; }
-  if (lower === 'moon' || lower === 'mond') { gibberishCount = 0; addOutput('<span class="emoji-big">🌙🌜🌛🌝</span>', 'celebration'); scrollToBottom(); return; }
-  if (lower === 'sun' || lower === 'sonne') { gibberishCount = 0; addOutput('<span class="emoji-big">☀️🌞☀️🌞</span>', 'celebration'); scrollToBottom(); return; }
-  if (lower === 'star' || lower === 'stars' || lower === 'stern' || lower === 'sterne') { gibberishCount = 0; addOutput('<span class="emoji-big">⭐🌟✨💫⭐🌟✨</span>', 'celebration'); scrollToBottom(); return; }
+  if (canonical === 'dance') { gibberishCount = 0; addOutput('🕺💃🪩🎵🎶🕺💃🪩🎵🎶', 'magic celebration'); scrollToBottom(); return; }
+  if (canonical === 'rainbow') { gibberishCount = 0; addOutput('<span class="rainbow giant">REGENBOGEN!</span>', 'celebration'); addOutput('🔴🟠🟡🟢🔵🟣', 'celebration'); scrollToBottom(); return; }
+  if (canonical === 'robot') { gibberishCount = 0; addOutput('🤖 BEEP BOOP!', 'teal celebration'); addOutput('<pre>  [o_o]\\n  /| |\\\n   | |\n  _|_|_</pre>', 'art'); scrollToBottom(); return; }
+  if (canonical === 'moon') { gibberishCount = 0; addOutput('<span class="emoji-big">🌙🌜🌛🌝</span>', 'celebration'); scrollToBottom(); return; }
+  if (canonical === 'sun') { gibberishCount = 0; addOutput('<span class="emoji-big">☀️🌞☀️🌞</span>', 'celebration'); scrollToBottom(); return; }
+  if (canonical === 'star') { gibberishCount = 0; addOutput('<span class="emoji-big">⭐🌟✨💫⭐🌟✨</span>', 'celebration'); scrollToBottom(); return; }
 
-  if (['animals','tiere'].includes(lower)) { gibberishCount = 0; addOutput(Object.keys(animals).map(a => `${animals[a].emoji} ${a} (${animalLabels[a] ?? a})`).join('  '), 'teal'); scrollToBottom(); return; }
-  if (['vehicles','cars','trucks','fahrzeuge'].includes(lower)) { gibberishCount = 0; addOutput(Object.keys(vehicles).map(v => `${vehicles[v].emoji} ${v} (${vehicleLabels[v] ?? v})`).join('  '), 'peach'); scrollToBottom(); return; }
-  if (['colors','colours','farben'].includes(lower)) { gibberishCount = 0; addOutput(Object.keys(colors).map(c => `${colors[c].emoji} ${c} (${colorLabels[c] ?? c})`).join('  '), 'pink'); scrollToBottom(); return; }
-  if (lower === 'letters' || lower === 'buchstaben') { gibberishCount = 0; addOutput('<span class="rainbow giant">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</span>', 'celebration'); scrollToBottom(); return; }
-  if (lower === 'numbers' || lower === 'zahlen') { gibberishCount = 0; addOutput('0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟', 'celebration'); scrollToBottom(); return; }
-  if (lower === 'clear' || lower === 'cls' || lower === 'loeschen') { terminal.innerHTML = ''; addOutput('✨', 'success'); scrollToBottom(); return; }
+  if (canonical === 'animals') { gibberishCount = 0; addOutput(Object.keys(animals).map(a => `${animals[a].emoji} ${animalLabels[a] ?? a}`).join('  '), 'teal'); scrollToBottom(); return; }
+  if (canonical === 'vehicles') { gibberishCount = 0; addOutput(Object.keys(vehicles).map(v => `${vehicles[v].emoji} ${vehicleLabels[v] ?? v}`).join('  '), 'peach'); scrollToBottom(); return; }
+  if (canonical === 'colors') { gibberishCount = 0; addOutput(Object.keys(colors).map(c => `${colors[c].emoji} ${colorLabels[c] ?? c}`).join('  '), 'pink'); scrollToBottom(); return; }
+  if (canonical === 'letters') { gibberishCount = 0; addOutput('<span class="rainbow giant">A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</span>', 'celebration'); scrollToBottom(); return; }
+  if (canonical === 'numbers') { gibberishCount = 0; addOutput('0️⃣1️⃣2️⃣3️⃣4️⃣5️⃣6️⃣7️⃣8️⃣9️⃣🔟', 'celebration'); scrollToBottom(); return; }
+  if (canonical === 'clear') { terminal.innerHTML = ''; addOutput('✨', 'success'); scrollToBottom(); return; }
 
-  if (lower.startsWith('i am ') || lower.startsWith('my name is ') || lower.startsWith('ich bin ') || lower.startsWith('mein name ist ')) {
+  if (introMatch) {
     gibberishCount = 0;
-    const name = lower.replace(/^(i am |my name is |ich bin |mein name ist )/, '').trim();
+    const name = introMatch[2].trim();
     addOutput(`<span class="rainbow giant">Hallo ${name.toUpperCase()}!</span> ✨`, 'celebration');
     scrollToBottom(); return;
   }
@@ -600,24 +598,18 @@ window._showWelcome();
 const inputLine = document.createElement('div');
 inputLine.className = 'input-line';
 inputLine.innerHTML = '<span class="prompt">tippe hier&gt;&nbsp;</span>';
-const inputEl = document.createElement('textarea');
+const inputEl = document.createElement('input');
+inputEl.type = 'text';
 inputEl.id = 'input';
 inputEl.autocomplete = 'off';
 inputEl.autocapitalize = 'off';
 inputEl.spellcheck = false;
-inputEl.rows = 1;
-inputEl.style.cssText = 'background:none;border:none;color:var(--text);font-family:"JetBrains Mono",monospace;font-size:16px;outline:none;flex:1;caret-color:var(--prompt);resize:none;overflow:hidden;line-height:1.6;padding:0;margin:0;';
+inputEl.style.cssText = 'background:none;border:none;color:var(--text);font-family:"SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;font-size:16px;outline:none;flex:1;caret-color:var(--prompt);';
 inputLine.appendChild(inputEl);
 terminal.appendChild(inputLine);
 
-function autoGrow() {
-  inputEl.style.height = 'auto';
-  inputEl.style.height = inputEl.scrollHeight + 'px';
-}
-inputEl.addEventListener('input', autoGrow);
-
 inputEl.addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleCommand(inputEl.value); inputEl.value = ''; autoGrow(); }
+  if (e.key === 'Enter') { handleCommand(inputEl.value); inputEl.value = ''; }
 });
 document.addEventListener('click', () => inputEl.focus());
 inputEl.focus();
