@@ -2,6 +2,8 @@
 
 A fake terminal where kids can type anything and get fun, safe responses. Single HTML file, no dependencies, runs offline.
 
+Live: [tiny-terminal.com](https://tiny-terminal.com)
+
 Built by [@meimakes](https://x.com/meimakes)
 
 
