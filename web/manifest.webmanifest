@@ -1,0 +1,16 @@
+{
+  "name": "Tiny Terminal",
+  "short_name": "TinyTerminal",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#2d2d2d",
+  "theme_color": "#2d2d2d",
+  "description": "Ein spielerisches Terminal-Spiel für Kinder mit ASCII-Art und Tipp-Spaß.",
+  "icons": [
+    {
+      "src": "social-preview.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}
